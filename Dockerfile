@@ -16,6 +16,8 @@ RUN apt-get update && \
     mv /opt/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION" /opt/kafka  && \
     rm /tmp/kafka.tgz
 
+RUN echo "\nlisteners = PLAINTEXT://127.0.0.1:9092" >> /opt/kafka/config/server.properties
+
 # Supervisor config
 ADD kafka.conf /etc/supervisor/conf.d/
 
